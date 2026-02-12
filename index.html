@@ -15,25 +15,21 @@
         }
 
         @media print {
-            /* 브라우저 기본 헤더/푸터 제거 및 여백 설정 */
             @page {
                 size: A4;
-                margin: 0mm; /* 전체를 채우기 위해 0으로 설정 후 내부 padding 사용 */
+                margin: 0;
             }
 
-            /* 배경색 및 이미지 강제 출력 */
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
                 color-adjust: exact !important;
             }
             
-            /* 인쇄 시 불필요한 UI 숨기기 */
-            header, footer, button, .print-hidden, .print\:hidden, nav, .action-buttons {
+            header, footer, button, .print-hidden, nav, .action-buttons, .fixed {
                 display: none !important;
             }
 
-            /* 인쇄 레이아웃 최적화 */
             body {
                 background-color: white !important;
                 margin: 0 !important;
@@ -43,32 +39,36 @@
             main {
                 padding: 0 !important;
                 margin: 0 !important;
-                width: 100% !important;
                 max-width: 100% !important;
-                display: block !important;
+                width: 100% !important;
             }
 
-            /* 리포트 컨테이너 출력 스타일 */
+            #root {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
             .report-container {
                 box-shadow: none !important;
                 border: none !important;
-                border-radius: 0 !important;
                 margin: 0 !important;
-                padding: 20mm !important; /* A4 여백 유지 */
-                overflow: visible !important;
+                padding: 15mm !important;
+                width: 100% !important;
+                height: 297mm; /* A4 height */
                 page-break-after: always;
+                display: flex;
+                flex-direction: column;
             }
 
-            /* 페이지 끊김 방지 */
-            .page-break-avoid {
-                break-inside: avoid !important;
-                page-break-inside: avoid !important;
+            .page-break {
+                page-break-before: always !important;
+                break-before: page !important;
             }
-            
-            /* 텍스트 가독성 */
-            .text-slate-900 { color: #0f172a !important; }
-            .text-slate-600 { color: #475569 !important; }
-            .text-indigo-600 { color: #4f46e5 !important; }
+
+            /* 인쇄 시 텍스트 크기 강제 최적화 */
+            .print-text-sm { font-size: 10pt !important; }
+            .print-text-lg { font-size: 18pt !important; }
+            .print-chart { height: 180px !important; }
         }
     </style>
 <script type="importmap">

@@ -33,10 +33,10 @@ export interface CareerRecommendation {
 
 export interface ResultData {
   persona: string;
-  keyword: string;
+  keyword: string; // 추가된 속성
   summary: string;
   chartData: { subject: string; value: number; fullMark: number }[];
-  careerFactorInterpretation: string; // New: Interpretation for the radar chart
+  careerFactorInterpretation: string;
   energyBalance: { 
     theoryScore: number; 
     psychEnergy: number;
@@ -52,8 +52,8 @@ export interface ResultData {
   actionPlan: {
     careers: CareerRecommendation[];
     colorTherapy: string;
-    colorTherapyReason: string; // New: Why this color?
-    scentTherapy: string; // New: Recommended scent
+    colorTherapyReason: string;
+    scentTherapy: string;
     immediateAction: string;
   };
 }
